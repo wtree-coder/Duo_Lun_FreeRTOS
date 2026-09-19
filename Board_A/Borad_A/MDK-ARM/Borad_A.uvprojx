@@ -864,11 +864,6 @@
               <FileType>1</FileType>
               <FilePath>..\Task\Task_Chassis.c</FilePath>
             </File>
-            <File>
-              <FileName>Task_Chassis.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Task\Task_Chassis.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

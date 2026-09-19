@@ -34,7 +34,7 @@ void Motor_Check(Motor_t *motor)
 
 void Motor_Rx_Callback(Motor_t *motor, uint8_t *Rx_Data)
 {
-    static int16_t pre_encoder;
+    int16_t pre_encoder;
     if (motor == NULL || Rx_Data == NULL) return;
 
     motor->check_count = 0;

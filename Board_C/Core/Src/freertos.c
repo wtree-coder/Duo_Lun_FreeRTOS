@@ -68,6 +68,13 @@ const osThreadAttr_t Gimbal_attributes = {
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityHigh1,
 };
+/* Definitions for IMU */
+osThreadId_t IMUHandle;
+const osThreadAttr_t IMU_attributes = {
+  .name = "IMU",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -75,8 +82,9 @@ const osThreadAttr_t Gimbal_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void Task_Data_Get(void *argument);
-void Task_CAN(void *argument);
+void Task_Communicate(void *argument);
 void Task_Gimbal(void *argument);
+void Task_IMU(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -111,10 +119,13 @@ void MX_FREERTOS_Init(void) {
   Data_GetHandle = osThreadNew(Task_Data_Get, NULL, &Data_Get_attributes);
 
   /* creation of Communicate */
-  CommunicateHandle = osThreadNew(Task_CAN, NULL, &Communicate_attributes);
+  CommunicateHandle = osThreadNew(Task_Communicate, NULL, &Communicate_attributes);
 
   /* creation of Gimbal */
   GimbalHandle = osThreadNew(Task_Gimbal, NULL, &Gimbal_attributes);
+
+  /* creation of IMU */
+  IMUHandle = osThreadNew(Task_IMU, NULL, &IMU_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -144,22 +155,22 @@ __weak void Task_Data_Get(void *argument)
   /* USER CODE END Task_Data_Get */
 }
 
-/* USER CODE BEGIN Header_Task_CAN */
+/* USER CODE BEGIN Header_Task_Communicate */
 /**
-* @brief Function implementing the CAN thread.
+* @brief Function implementing the Communicate thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_Task_CAN */
-__weak void Task_CAN(void *argument)
+/* USER CODE END Header_Task_Communicate */
+__weak void Task_Communicate(void *argument)
 {
-  /* USER CODE BEGIN Task_CAN */
+  /* USER CODE BEGIN Task_Communicate */
   /* Infinite loop */
   for(;;)
   {
     osDelay(1);
   }
-  /* USER CODE END Task_CAN */
+  /* USER CODE END Task_Communicate */
 }
 
 /* USER CODE BEGIN Header_Task_Gimbal */
@@ -178,6 +189,24 @@ __weak void Task_Gimbal(void *argument)
     osDelay(1);
   }
   /* USER CODE END Task_Gimbal */
+}
+
+/* USER CODE BEGIN Header_Task_IMU */
+/**
+* @brief Function implementing the IMU thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Task_IMU */
+__weak void Task_IMU(void *argument)
+{
+  /* USER CODE BEGIN Task_IMU */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Task_IMU */
 }
 
 /* Private application code --------------------------------------------------*/

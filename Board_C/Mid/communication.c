@@ -16,7 +16,6 @@ void C_SendMessage_To_A_1ms_Callback(void)
     else
     {
         vx = vy = wz = 0;
-        CAN1_0x300_Tx_Data[6] = DR16_SWITCH_DOWN;
     }
 
     CAN1_0x300_Tx_Data[0] = (uint8_t)(vx >> 8);
@@ -25,7 +24,7 @@ void C_SendMessage_To_A_1ms_Callback(void)
     CAN1_0x300_Tx_Data[3] = (uint8_t)(vy & 0xFF);
     CAN1_0x300_Tx_Data[4] = (uint8_t)(wz >> 8);
     CAN1_0x300_Tx_Data[5] = (uint8_t)(wz & 0xFF);
-    CAN1_0x300_Tx_Data[6] = (uint8_t)DR16_Data.Chassis_Switch;
+    CAN1_0x300_Tx_Data[6] = DR16_Data.is_ok ? (uint8_t)DR16_Data.Chassis_Switch : (uint8_t)DR16_SWITCH_DOWN;
 
     CAN_Send_Data(&hcan1, 0x300, CAN1_0x300_Tx_Data, 7);
 }

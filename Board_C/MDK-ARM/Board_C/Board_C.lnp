@@ -46,15 +46,18 @@
 "board_c\task_data_get.o"
 "board_c\task_can.o"
 "board_c\task_gimbal.o"
+"board_c\task_imu.o"
 "board_c\callback.o"
 "board_c\vofa_config.o"
 "board_c\communication.o"
 "board_c\gimbal_config.o"
+"board_c\imu.o"
 "board_c\drv_can.o"
 "board_c\motor.o"
 "board_c\dr16.o"
 "board_c\vofa.o"
 "board_c\pid.o"
+"board_c\bsp_spi.o"
 --strict --scatter "Board_C\Board_C.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

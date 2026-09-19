@@ -645,9 +645,14 @@
               <FilePath>..\Task\Task_Gimbal.c</FilePath>
             </File>
             <File>
-              <FileName>Task_Gimbal.h</FileName>
+              <FileName>Task_IMU.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Task\Task_Gimbal.h</FilePath>
+              <FilePath>..\Task\Task_IMU.h</FilePath>
+            </File>
+            <File>
+              <FileName>Task_IMU.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\Task_IMU.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -673,6 +678,16 @@
               <FileName>gimbal_config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Mid\gimbal_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Mid\imu.c</FilePath>
+            </File>
+            <File>
+              <FileName>imu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Mid\imu.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -703,6 +718,11 @@
               <FileName>pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BSP\pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\bsp_spi.c</FilePath>
             </File>
           </Files>
         </Group>
