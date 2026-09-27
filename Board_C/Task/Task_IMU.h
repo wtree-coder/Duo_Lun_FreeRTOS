@@ -6,6 +6,6 @@
 #include "imu.h"
 
 
-void imu_task(void const * pvParameters);
+void Task_IMU(void *argument);
 
 #endif

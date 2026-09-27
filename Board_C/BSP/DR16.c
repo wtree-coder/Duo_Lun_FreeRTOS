@@ -48,7 +48,7 @@ float DR16_XiaoZhun(float input)
 
 void DR16_Check(void)
 {
-    if (check_count < 50)
+    if (check_count < 500)
     {
         check_count++;
     }

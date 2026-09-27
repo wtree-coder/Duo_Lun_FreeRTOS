@@ -35,3 +35,5 @@ borad_a\chassis_config.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart
 borad_a\chassis_config.o: ../BSP/motor.h
 borad_a\chassis_config.o: ../BSP/pid.h
 borad_a\chassis_config.o: ../Core/Inc/main.h
+borad_a\chassis_config.o: ../BSP/drv_can.h
+borad_a\chassis_config.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\math.h

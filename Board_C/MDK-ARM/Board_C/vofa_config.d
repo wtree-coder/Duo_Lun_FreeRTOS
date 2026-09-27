@@ -40,3 +40,7 @@ board_c\vofa_config.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\stdarg.
 board_c\vofa_config.o: ../BSP/DR16.h
 board_c\vofa_config.o: ..\Mid\gimbal_config.h
 board_c\vofa_config.o: ../BSP/motor.h
+board_c\vofa_config.o: ../BSP/pid.h
+board_c\vofa_config.o: ../Core/Inc/main.h
+board_c\vofa_config.o: ..\Mid\imu.h
+board_c\vofa_config.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\math.h

@@ -7,10 +7,8 @@ void Task_Gimbal(void *argument)
     uint32_t tick = osKernelGetTickCount();
     for(;;)
     {
+        Gimbal_Task_1ms_Callback();
         tick++;
         osDelayUntil(tick);
     }
 }
-
-
-

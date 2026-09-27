@@ -1,29 +1,30 @@
 #include "communication.h"
 #include "chassis_config.h"
 
-void A_GetMessage_From_C(uint8_t *data)
+void Message_Update(uint8_t *rx_data)
 {
-    int16_t vx = (int16_t)((data[0] << 8) | data[1]);
-    int16_t vy = (int16_t)((data[2] << 8) | data[3]);
-    int16_t wz = (int16_t)((data[4] << 8) | data[5]);
+    int16_t vx_temp = (int16_t)((rx_data[0] << 8) | rx_data[1]);
+    int16_t vy_temp = (int16_t)((rx_data[2] << 8) | rx_data[3]);
+    int16_t wz_temp = (int16_t)((rx_data[4] << 8) | rx_data[5]);
 
-    chassis.vx = vx / 3000.0f * V_MAX;
-    chassis.vy = vy / 3000.0f * V_MAX;
-    chassis.wz = wz / 3000.0f * WZ_MAX_RADPS;
+    chassis.vx = vx_temp / 1000.0f;
+    chassis.vy = vy_temp / 1000.0f;
+    chassis.wz = wz_temp / 1000.0f;
 
-    chassis.chassis_switch = data[6];
-
-    switch (chassis.chassis_switch)
+    switch(rx_data[6])
     {
-        case DR16_SWITCH_UP:
-            chassis.mode = Chassis_Move;
-            break;
-        case DR16_SWITCH_MID:
+        case 1:
             chassis.mode = Chassis_XiaoTuoLuo;
             break;
-        case DR16_SWITCH_DOWN:
+        case 3:
+            chassis.mode = Chassis_Move;
+            break;
+        case 2:
         default:
             chassis.mode = Chassis_Disable;
             break;
     }
+
+    chassis.check_count = 0;
+    chassis.is_ok = 1;
 }

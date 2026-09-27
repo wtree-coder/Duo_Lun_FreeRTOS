@@ -2,6 +2,7 @@
 #include "DR16.h"
 #include "usart.h"
 #include "drv_can.h"
+#include "gimbal_config.h"
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {

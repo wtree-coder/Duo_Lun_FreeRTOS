@@ -1,9 +1,9 @@
-#include "Task_CAN.h"
+#include "Task_Communicate.h"
 #include "drv_can.h"
 #include "can.h"
 #include "communication.h"
 
-void Task_CAN(void *argument)
+void Task_Communicate(void *argument)
 {
     CAN_Init(&hcan1);
     //C板只发送数据

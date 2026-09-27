@@ -52,3 +52,6 @@ board_c\task_data_get.o: ../Mid/vofa_config.h
 board_c\task_data_get.o: ../Core/Inc/usart.h
 board_c\task_data_get.o: ../Core/Inc/main.h
 board_c\task_data_get.o: ../BSP/DR16.h
+board_c\task_data_get.o: ../Mid/gimbal_config.h
+board_c\task_data_get.o: ../BSP/motor.h
+board_c\task_data_get.o: ../BSP/pid.h

@@ -5,14 +5,16 @@
 void Vofa_20ms_Send_Callback(void)
 {
     static uint32_t vofa_count = 0;
+
     if(++vofa_count < 20) return;
     vofa_count = 0;
 
-    Vofa_Set_Data(4, &chassis.motor_3508[0].total_encoder, &chassis.motor_3508[1].total_encoder,
-                     &chassis.motor_3508[2].total_encoder, &chassis.motor_3508[3].total_encoder);
+    float temp[4];
+    for(int i = 0; i < 4; i++)
+    {
+        temp[i] = (float)chassis.motor_6020[i].total_encoder;
+    }
 
-    //Vofa_Set_Data(4, &chassis.motor_6020[0].total_encoder, &chassis.motor_6020[1].total_encode
-    //                &chassis.motor_6020[2].total_encode, &chassis.motor_6020[3].total_encode);
+    Vofa_Set_Data(5, &chassis.vy, &temp[0], &temp[1], &temp[2], &temp[3]);
     Vofa_Send_Data();
 }
-

@@ -1,5 +1,6 @@
 borad_a\callback.o: ..\Mid\callback.c
 borad_a\callback.o: ..\Mid\callback.h
+borad_a\callback.o: ../BSP/drv_can.h
 borad_a\callback.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 borad_a\callback.o: ../Core/Inc/stm32f4xx_hal_conf.h
 borad_a\callback.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h

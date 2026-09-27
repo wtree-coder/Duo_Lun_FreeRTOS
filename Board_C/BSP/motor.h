@@ -15,18 +15,20 @@
 #define MOTOR_3508_MAX_RPM     3000.0f
 #define MOTOR_3508_OUT_LIMIT   16384
 
-#define MOTOR_6020_MAX_RPM     320.0f
-#define MOTOR_6020_OUT_LIMIT   30000
+#define MOTOR_6020_MAX_RPM     320.0f * 0.5f
+#define MOTOR_6020_OUT_LIMIT   16384
 
 
 typedef struct
 {
+    //原始电调反馈值
     uint16_t rx_encoder;
     int16_t  rx_rpm;
     int16_t  rx_torque;
     uint8_t  temp;
 
-    float    now_angle;         //弧度制
+    //处理后的数据
+    float    now_angle;         //弧度制、单圈
     float    now_rad_s;
     float    now_torque;
 
@@ -43,6 +45,7 @@ typedef struct
     float target_rad_s;
 
     int16_t  out;
+
 
     uint16_t check_count;
     uint8_t  is_ok;

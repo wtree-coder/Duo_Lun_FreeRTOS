@@ -36,4 +36,9 @@ board_c\gimbal_config.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 board_c\gimbal_config.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 board_c\gimbal_config.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 board_c\gimbal_config.o: ../BSP/motor.h
+board_c\gimbal_config.o: ../BSP/pid.h
+board_c\gimbal_config.o: ../Core/Inc/main.h
 board_c\gimbal_config.o: ../BSP/drv_can.h
+board_c\gimbal_config.o: ..\Mid\imu.h
+board_c\gimbal_config.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\math.h
+board_c\gimbal_config.o: ../BSP/DR16.h

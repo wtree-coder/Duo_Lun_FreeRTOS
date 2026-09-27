@@ -3,6 +3,7 @@
 #include "vofa_config.h"
 #include "usart.h"
 #include "DR16.h"
+#include "gimbal_config.h"
 
 void Task_Data_Get(void *argument)
 {    
@@ -16,9 +17,12 @@ void Task_Data_Get(void *argument)
     for(;;)
     {
         DR16_Check();
+        Gimbal_Check();
+        
         Vofa_20ms_Send_Callback();     
         
         tick++;
         osDelayUntil(tick);
+
     }
 }

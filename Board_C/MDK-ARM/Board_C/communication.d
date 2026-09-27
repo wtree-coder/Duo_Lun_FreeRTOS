@@ -37,3 +37,8 @@ board_c\communication.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_e
 board_c\communication.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 board_c\communication.o: ../BSP/DR16.h
 board_c\communication.o: ../BSP/drv_can.h
+board_c\communication.o: ..\Mid\gimbal_config.h
+board_c\communication.o: ../BSP/motor.h
+board_c\communication.o: ../BSP/pid.h
+board_c\communication.o: ../Core/Inc/main.h
+board_c\communication.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\math.h

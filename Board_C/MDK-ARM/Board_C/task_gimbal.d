@@ -48,3 +48,5 @@ board_c\task_gimbal.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 board_c\task_gimbal.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 board_c\task_gimbal.o: ../Mid/gimbal_config.h
 board_c\task_gimbal.o: ../BSP/motor.h
+board_c\task_gimbal.o: ../BSP/pid.h
+board_c\task_gimbal.o: ../Core/Inc/main.h

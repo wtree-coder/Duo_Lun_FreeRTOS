@@ -39,3 +39,6 @@ board_c\callback.o: ../BSP/DR16.h
 board_c\callback.o: ../Core/Inc/usart.h
 board_c\callback.o: ../Core/Inc/main.h
 board_c\callback.o: ../BSP/drv_can.h
+board_c\callback.o: ..\Mid\gimbal_config.h
+board_c\callback.o: ../BSP/motor.h
+board_c\callback.o: ../BSP/pid.h

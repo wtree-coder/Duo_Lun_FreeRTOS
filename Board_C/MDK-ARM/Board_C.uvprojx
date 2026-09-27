@@ -635,24 +635,19 @@
               <FilePath>..\Task\Task_Data_Get.c</FilePath>
             </File>
             <File>
-              <FileName>Task_CAN.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\Task_CAN.c</FilePath>
-            </File>
-            <File>
               <FileName>Task_Gimbal.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\Task_Gimbal.c</FilePath>
             </File>
             <File>
-              <FileName>Task_IMU.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Task\Task_IMU.h</FilePath>
-            </File>
-            <File>
               <FileName>Task_IMU.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\Task_IMU.c</FilePath>
+            </File>
+            <File>
+              <FileName>Task_Communicate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\Task_Communicate.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -683,11 +678,6 @@
               <FileName>imu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Mid\imu.c</FilePath>
-            </File>
-            <File>
-              <FileName>imu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Mid\imu.h</FilePath>
             </File>
           </Files>
         </Group>

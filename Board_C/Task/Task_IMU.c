@@ -17,7 +17,7 @@
 extern IMU_RawData_TypeDef imu_raw_data;
 extern IMU_EulerAngles_TypeDef imu_euler_data;
 
-void imu_task(void const *pvParameters)
+void Task_IMU(void *argument)
 {
   TickType_t xLastWakeTime_Imu;                   // 存储上一次唤醒时间的变量
   const TickType_t xDelay_Imu = pdMS_TO_TICKS(1); // 1ms 延时（转换为 tick形式）

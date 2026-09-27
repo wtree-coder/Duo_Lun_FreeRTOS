@@ -14,7 +14,7 @@ void Motor_Init(Motor_t *motor, float rate, float max_rpm, float output_limit)
 
 void Motor_Check(Motor_t *motor)
 {
-    if(motor->check_count < 50)
+    if(motor->check_count < 500)
     {
         motor->check_count++;
     }

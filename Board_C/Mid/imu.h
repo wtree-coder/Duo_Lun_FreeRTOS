@@ -26,7 +26,7 @@ typedef struct
 {
   float roll;
   float pitch;
-  float yaw;
+  float yaw;           //归一化 [-PI，PI]
 } IMU_EulerAngles_TypeDef;
 
 
