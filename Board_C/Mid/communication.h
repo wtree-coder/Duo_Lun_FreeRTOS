@@ -5,6 +5,8 @@
 
 #define MAX_V           3.0f         //3m/s
 #define MAX_W           15.0f        //15.0 rad/s
+
+extern int16_t vx_temp,vy_temp,wz_temp;
 void C_SendMessage_To_A_1ms_Callback(void);
 
 #endif

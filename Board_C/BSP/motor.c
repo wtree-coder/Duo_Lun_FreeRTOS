@@ -14,7 +14,7 @@ void Motor_Init(Motor_t *motor, float rate, float max_rpm, float output_limit)
 
 void Motor_Check(Motor_t *motor)
 {
-    if(motor->check_count < 500)
+    if(motor->check_count < MOTOR_OFFLINE_COUNT)
     {
         motor->check_count++;
     }
@@ -23,12 +23,14 @@ void Motor_Check(Motor_t *motor)
         float rate         = motor->rate;
         float max_rpm      = motor->max_rpm;
         float output_limit = motor->output_limit;
+        float angle_offset = motor->angle_offset;   // 零点标定值必须保留，否则掉线重连后零点丢失
 
         memset(motor, 0, sizeof(Motor_t));
 
         motor->rate         = rate;
         motor->max_rpm      = max_rpm;
         motor->output_limit = output_limit;
+        motor->angle_offset = angle_offset;
     }
 }
 

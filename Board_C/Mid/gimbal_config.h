@@ -12,14 +12,11 @@ typedef enum
     GIMBAL_SHOOT,
 }Gimbal_Mode_t;
 
-/* 云台朝正前方时实测的 yaw 6020 编码器角 (rad)，标定后填入 */
-#define GIMBAL_YAW_FORWARD_OFFSET  0.0f
-
 typedef struct
 {
     float total_yaw;
     float target_yaw;        // IMU 绝对 yaw 目标 (rad)
-    float delta_angle;       // 云台相对底盘角 (rad) = yaw编码器角 - 正前零偏
+    float delta_angle;       // 云台相对底盘角 (rad)，由 Gimbal_Data_Update 每 1ms 更新，已归一化到 (-PI, PI]
 
     Motor_t motor_6020;
     Gimbal_Mode_t mode;
@@ -35,8 +32,8 @@ void Gimbal_Check(void);
 void Gimbal_Mode_Choose(void);
 void Gimbal_Data_Update(void);
 void Gimbal_PID_Calc(void);
+void Gimbal_CAN_Send_Callback(void);
 
-void Gimbal_Task_1ms_Callback(void);
 
 extern Gimbal_t gimbal;
 

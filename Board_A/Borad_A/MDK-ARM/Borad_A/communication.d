@@ -36,3 +36,5 @@ borad_a\communication.o: ..\Mid\chassis_config.h
 borad_a\communication.o: ../BSP/motor.h
 borad_a\communication.o: ../BSP/pid.h
 borad_a\communication.o: ../Core/Inc/main.h
+borad_a\communication.o: ../BSP/drv_can.h
+borad_a\communication.o: ../Core/Inc/can.h

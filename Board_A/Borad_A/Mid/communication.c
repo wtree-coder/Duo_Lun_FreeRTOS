@@ -1,6 +1,15 @@
 #include "communication.h"
 #include "chassis_config.h"
+#include "drv_can.h"
+#include "can.h"
 
+void Communication_Init(void)
+{
+    //CAN_Filter_Mask_Config(&hcan1, CAN_FILTER(0) | CAN_FIFO_0 | CAN_STDID | CAN_DATA_TYPE, 0x300, 0x7FF);
+    CAN_Filter_Mask_Config(&hcan1, CAN_FILTER(0) | CAN_FIFO_0 | CAN_STDID | CAN_DATA_TYPE, 0, 0);
+}
+
+//已验证遥控器接收无误
 void Message_Update(uint8_t *rx_data)
 {
     int16_t vx_temp = (int16_t)((rx_data[0] << 8) | rx_data[1]);
@@ -24,7 +33,8 @@ void Message_Update(uint8_t *rx_data)
             chassis.mode = Chassis_Disable;
             break;
     }
-
-    chassis.check_count = 0;
+    
     chassis.is_ok = 1;
+    chassis.check_count = 0;
+    chassis.cmd_rx_count++;
 }

@@ -38,3 +38,4 @@ borad_a\vofa_config.o: ..\Mid\chassis_config.h
 borad_a\vofa_config.o: ../BSP/motor.h
 borad_a\vofa_config.o: ../BSP/pid.h
 borad_a\vofa_config.o: ../Core/Inc/main.h
+borad_a\vofa_config.o: ../Core/Inc/can.h

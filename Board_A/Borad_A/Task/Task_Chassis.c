@@ -4,10 +4,13 @@
 void Task_Chassis(void *argument)
 {
     Chassis_Init();
-
+    osDelay(500);
     for(;;)
     {
-        Chassis_Task_1ms_Callback();
+        Chassis_Check();
+        Chassis_Data_Update_Callback();
+        Chassis_PID_Callback();
+        Chassis_Send_Callback();
         osDelay(1);
     }
 }

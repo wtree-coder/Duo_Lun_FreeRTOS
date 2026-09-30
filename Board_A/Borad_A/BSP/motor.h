@@ -15,8 +15,8 @@
 #define MOTOR_3508_MAX_RPM     3000.0f
 #define MOTOR_3508_OUT_LIMIT   16384
 
-#define MOTOR_6020_MAX_RPM     320.0f
-#define MOTOR_6020_OUT_LIMIT   30000
+#define MOTOR_6020_MAX_RPM     320.0f * 0.5f
+#define MOTOR_6020_OUT_LIMIT   16384
 
 
 typedef struct

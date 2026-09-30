@@ -44,3 +44,4 @@ board_c\vofa_config.o: ../BSP/pid.h
 board_c\vofa_config.o: ../Core/Inc/main.h
 board_c\vofa_config.o: ..\Mid\imu.h
 board_c\vofa_config.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\math.h
+board_c\vofa_config.o: ..\Mid\communication.h

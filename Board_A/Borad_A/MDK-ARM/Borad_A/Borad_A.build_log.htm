@@ -21,13 +21,24 @@ Target DLL:      CMSIS_AGDI.dll V1.33.15.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-e:\rm_example\My_Duo_Lun\Board_A\Borad_A\MDK-ARM\Borad_A.uvprojx
+E:\rm_example\My_Duo_Lun\Board_A\Borad_A\MDK-ARM\Borad_A.uvprojx
 Project File Date:  09/19/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\programFile\keil\core\ARM\ARMCC\Bin'
 Build target 'Borad_A'
-"Borad_A\Borad_A.axf" - 0 Error(s), 0 Warning(s).
+compiling chassis_config.c...
+../BSP/pid.h(72): warning:  #1-D: last line of file ends without a newline
+  							
+..\Mid\chassis_config.c(124): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      const float half = LENGTH / 2.0f;
+..\Mid\chassis_config.c(174): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      const float half = LENGTH / 2.0f;
+..\Mid\chassis_config.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=27744 RO-data=680 RW-data=176 ZI-data=22688  
+FromELF: creating hex file...
+"Borad_A\Borad_A.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +61,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

@@ -18,6 +18,10 @@
 #define MOTOR_6020_MAX_RPM     320.0f * 0.5f
 #define MOTOR_6020_OUT_LIMIT   16384
 
+// 掉线判定阈值：连续这么多次调用 Motor_Check 都没收到反馈，就清空结构体并置 is_ok=0。
+// 调用点在 Task_Data_Get，1kHz，所以 20 ≈ 20ms 无反馈即判定掉线。
+#define MOTOR_OFFLINE_COUNT    20
+
 
 typedef struct
 {
@@ -28,7 +32,7 @@ typedef struct
     uint8_t  temp;
 
     //处理后的数据
-    float    now_angle;         //弧度制、单圈
+    float    now_angle;         //弧度制、多圈、未归一化
     float    now_rad_s;
     float    now_torque;
 

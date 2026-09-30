@@ -38,3 +38,4 @@ borad_a\callback.o: ../BSP/motor.h
 borad_a\callback.o: ..\Mid\chassis_config.h
 borad_a\callback.o: ../BSP/pid.h
 borad_a\callback.o: ../Core/Inc/main.h
+borad_a\callback.o: ..\Mid\vofa_config.h
