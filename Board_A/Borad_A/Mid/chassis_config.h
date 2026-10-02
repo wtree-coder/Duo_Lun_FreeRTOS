@@ -5,7 +5,17 @@
 #include "motor.h"
 #include "pid.h"
 
-#define LENGTH 0.5   //正方形边长0.5m
+#define LENGTH      0.5f       //正方形边长:0.5m
+//#define WHEEL_R     0.1016f    //单位:m
+#define WHEEL_R 0.05f
+#define CHASSIS_3508_OUT_MAX  6000
+
+typedef enum
+{
+    Chassis_Disable = 0,
+    Chassis_XiaoTuoLuo,
+    Chassis_Move,
+}Chassis_Mode;
 
 typedef enum
 {
@@ -16,12 +26,21 @@ typedef enum
     RU,               //0x208、0x203
 }Chassis_Pos;
 
-typedef enum
+typedef struct
 {
-    Chassis_Disable = 0,
-    Chassis_XiaoTuoLuo,
-    Chassis_Move,
-}Chassis_Mode;
+    float x;
+    float y;
+}Chassis_WheelPos_t;
+
+static const Chassis_WheelPos_t wheel_pos[4] =
+{
+    [LU] = {  LENGTH / 2.0f,  LENGTH / 2.0f },   //左前
+    [LD] = { -LENGTH / 2.0f,  LENGTH / 2.0f },   //左后
+    [RD] = { -LENGTH / 2.0f, -LENGTH / 2.0f },   //右后
+    [RU] = {  LENGTH / 2.0f, -LENGTH / 2.0f },   //右前
+};
+
+
 
 typedef struct
 {
@@ -38,7 +57,6 @@ typedef struct
     float wz;
 
     uint32_t check_count;
-    uint32_t cmd_rx_count;
     uint8_t is_ok;
 } Chassis_t;
 
@@ -48,10 +66,7 @@ void Chassis_Init(void);
 void Chassis_Check(void);
 
 void Chassis_Mode_Disable(void);
-void Chassis_Stable(void);
-void Chassis_XiaoTuoLuo_Pose(void);
-void Move_Calc(void);
-void Xiao_Tuo_Luo_Calc(void);
+void Chassis_Move_Calc(void);
 void Chassis_Data_Update_Callback(void);
 void Chassis_PID_Callback(void);
 void Chassis_Send_Callback(void);

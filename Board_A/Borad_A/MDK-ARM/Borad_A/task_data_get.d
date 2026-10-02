@@ -50,3 +50,6 @@ borad_a\task_data_get.o: E:\programFile\keil\core\ARM\ARMCC\Bin\..\include\stdar
 borad_a\task_data_get.o: ../BSP/drv_can.h
 borad_a\task_data_get.o: ../Mid/vofa_config.h
 borad_a\task_data_get.o: ../Mid/communication.h
+borad_a\task_data_get.o: ../Mid/chassis_config.h
+borad_a\task_data_get.o: ../BSP/motor.h
+borad_a\task_data_get.o: ../BSP/pid.h

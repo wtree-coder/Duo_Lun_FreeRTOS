@@ -16,9 +16,9 @@ void Message_Update(uint8_t *rx_data)
     int16_t vy_temp = (int16_t)((rx_data[2] << 8) | rx_data[3]);
     int16_t wz_temp = (int16_t)((rx_data[4] << 8) | rx_data[5]);
 
-    chassis.vx = vx_temp / 1000.0f;
-    chassis.vy = vy_temp / 1000.0f;
-    chassis.wz = wz_temp / 1000.0f;
+    chassis.vx = vx_temp * 0.001f;
+    chassis.vy = vy_temp * 0.001f;
+    chassis.wz = wz_temp * 0.001f;
 
     switch(rx_data[6])
     {
@@ -36,5 +36,4 @@ void Message_Update(uint8_t *rx_data)
     
     chassis.is_ok = 1;
     chassis.check_count = 0;
-    chassis.cmd_rx_count++;
 }

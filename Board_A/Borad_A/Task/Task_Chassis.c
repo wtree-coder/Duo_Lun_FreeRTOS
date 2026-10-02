@@ -7,7 +7,6 @@ void Task_Chassis(void *argument)
     osDelay(500);
     for(;;)
     {
-        Chassis_Check();
         Chassis_Data_Update_Callback();
         Chassis_PID_Callback();
         Chassis_Send_Callback();
