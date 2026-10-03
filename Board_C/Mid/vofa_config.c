@@ -14,9 +14,13 @@ void Vofa_20ms_Send_Callback(void)
 
     //Vofa_Set_Data(3, &gimbal.motor_6020.total_encoder, &gimbal.motor_6020.now_angle, &gimbal.motor_6020.now_rad_s);
 
-    temp[0] = (float)gimbal.motor_6020.now_rad_s;
-    temp[1] = (float)gimbal.motor_6020.target_rad_s;
-    Vofa_Set_Data(2, &temp[0], &temp[1]);
+    //temp[0] = (float)gimbal.motor_6020.now_rad_s;
+    //temp[1] = (float)gimbal.motor_6020.target_rad_s;
+    temp[0] = gimbal.total_yaw;
+    temp[1] = gimbal.target_yaw;
+    temp[2] = (float)imu_euler_data.yaw;
+    temp[3] = (float)gimbal.motor_6020.rx_encoder;
+    Vofa_Set_Data(4, &temp[0], &temp[1], &temp[2], &temp[3]);
     //Vofa_Set_Data(7, &temp[0], &temp[1], &temp[2], &temp[3], &temp[4], &temp[5], &temp[6]);
     Vofa_Send_Data();
 }

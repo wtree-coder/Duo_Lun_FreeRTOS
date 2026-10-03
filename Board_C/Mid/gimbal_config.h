@@ -5,6 +5,7 @@
 #include "motor.h"
 #include "pid.h"
 
+#define MOTOR_6020_OMEGA_KF 130
 typedef enum
 {
     GIMBAL_DISABLE = 0,

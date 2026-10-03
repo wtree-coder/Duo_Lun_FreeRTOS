@@ -8,7 +8,7 @@
 #define LENGTH      0.5f       //正方形边长:0.5m
 //#define WHEEL_R     0.1016f    //单位:m
 #define WHEEL_R 0.05f
-#define CHASSIS_3508_OUT_MAX  6000
+#define CHASSIS_3508_OUT_MAX  8000
 
 typedef enum
 {

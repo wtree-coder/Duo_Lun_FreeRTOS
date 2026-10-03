@@ -39,7 +39,8 @@ void Gimbal_Init(void)
     gimbal.motor_6020.angle_offset = 4870.0f / 8192.0f * 2.0f * PI;
 
     //待精调
-    PID_Init(&gimbal.pid_motor_6020_angle, 90.0f, 0.0f, 0.0f, 0.001f, MOTOR_6020_MAX_RPM * RPM_TO_RADPS, 0.0f, 0.0f, PID_MODE_POSITION);
+    PID_Init(&gimbal.pid_motor_6020_angle, 90.0f, 0.0f, 0.0f, 0.001f, MOTOR_6020_MAX_RPM * RPM_TO_RADPS, 0.2f, 0.0f, PID_MODE_POSITION);
+    //PID_SetIntegralSeparationThreshold(&gimbal.pid_motor_6020_angle, 0.0f);
     PID_Init(&gimbal.pid_motor_6020_omega, 1200.0f, 0.0f, 0.0f, 0.001f, MOTOR_6020_OUT_LIMIT, 0.0f, 0.0f, PID_MODE_POSITION);
 }
 
@@ -92,12 +93,11 @@ void Gimbal_Data_Update(void)
         case GIMBAL_MOVE:
         case GIMBAL_SHOOT:
             //遥控器控制
-            gimbal.target_yaw -= DR16_XiaoZhun(DR16_Data.Right_X) * 0.008f;
+            gimbal.target_yaw -= DR16_XiaoZhun(DR16_Data.Right_X) * 0.012f;
             break;
 
         case GIMBAL_DISABLE:
         default:
-            // 失能时目标紧跟实际角，使云台使能不会突变
             gimbal.target_yaw = gimbal.total_yaw;
             break;
     }
@@ -112,7 +112,8 @@ void Gimbal_PID_Calc(void)
     //gimbal.motor_6020.target_rad_s = -DR16_XiaoZhun(DR16_Data.Right_X) * MOTOR_6020_MAX_RPM * RPM_TO_RADPS;
     gimbal.motor_6020.out = PIDCompute(&gimbal.pid_motor_6020_omega,
                                         gimbal.motor_6020.now_rad_s,
-                                        gimbal.motor_6020.target_rad_s);
+                                        gimbal.motor_6020.target_rad_s) + gimbal.motor_6020.target_rad_s * MOTOR_6020_OMEGA_KF;
+                                        
 }
 
 void Gimbal_CAN_Send_Callback(void)

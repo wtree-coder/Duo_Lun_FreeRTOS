@@ -20,25 +20,31 @@ void Motor_Check(Motor_t *motor)
     }
     else
     {
-        float rate         = motor->rate;
-        float max_rpm      = motor->max_rpm;
-        float output_limit = motor->output_limit;
-        float angle_offset = motor->angle_offset;   // 零点标定值必须保留，否则掉线重连后零点丢失
+        float rate          = motor->rate;
+        float max_rpm       = motor->max_rpm;
+        float output_limit  = motor->output_limit;
+        float angle_offset  = motor->angle_offset;   // 零点标定值必须保留，否则掉线重连后零点丢失
+        uint16_t rx_encoder = motor->rx_encoder;
+        int32_t speed_encoder = motor->speed_encoder;
 
         memset(motor, 0, sizeof(Motor_t));
 
-        motor->rate         = rate;
-        motor->max_rpm      = max_rpm;
-        motor->output_limit = output_limit;
-        motor->angle_offset = angle_offset;
+        motor->rate          = rate;
+        motor->max_rpm       = max_rpm;
+        motor->output_limit  = output_limit;
+        motor->angle_offset  = angle_offset;
+        motor->rx_encoder    = rx_encoder;
+        motor->speed_encoder = speed_encoder;
     }
 }
 
 void Motor_Rx_Callback(Motor_t *motor, uint8_t *Rx_Data)
 {
     int16_t pre_encoder;
+    uint8_t first_frame;
     if (motor == NULL || Rx_Data == NULL) return;
 
+    first_frame = !motor->is_ok;
     motor->check_count = 0;
     motor->is_ok = 1;
     pre_encoder = motor->rx_encoder;
@@ -61,8 +67,36 @@ void Motor_Rx_Callback(Motor_t *motor, uint8_t *Rx_Data)
 
     motor->total_encoder = motor->total_round * 8192 + motor->rx_encoder;
 
+    if(first_frame)
+    {
+        motor->speed_encoder = motor->total_encoder;
+    }
+
     motor->now_angle = (float)motor->total_encoder / 8192.0f * 2.0f * PI / motor->rate;
-    motor->now_rad_s = (float)motor->rx_rpm * RPM_TO_RADPS / motor->rate;
+    if(motor->rx_rpm != 0)
+    {
+        motor->now_rad_s = (float)motor->rx_rpm * RPM_TO_RADPS / motor->rate;
+    }
+
+    if(++motor->speed_count >= MOTOR_SPEED_WINDOW)
+    {
+        if(motor->rx_rpm == 0)
+        {
+            int32_t delta_low_speed_encoder = motor->total_encoder - motor->speed_encoder;
+
+            if(delta_low_speed_encoder <= 1 && delta_low_speed_encoder >= -1)
+            {
+                motor->now_rad_s = 0.0f;
+            }
+            else
+            {
+                motor->now_rad_s = (float)delta_low_speed_encoder * 2.0f * PI / 8192.0f / motor->rate
+                                   * (1000.0f / MOTOR_SPEED_WINDOW);
+            }
+        }
+        motor->speed_encoder = motor->total_encoder;
+        motor->speed_count = 0;
+    }
 
     motor->now_torque = (float)motor->rx_torque;
 }

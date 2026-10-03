@@ -649,6 +649,11 @@
               <FileType>1</FileType>
               <FilePath>..\Task\Task_Communicate.c</FilePath>
             </File>
+            <File>
+              <FileName>note.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\note.txt</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

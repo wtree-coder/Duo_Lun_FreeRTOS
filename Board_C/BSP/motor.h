@@ -22,6 +22,8 @@
 // 调用点在 Task_Data_Get，1kHz，所以 20 ≈ 20ms 无反馈即判定掉线。
 #define MOTOR_OFFLINE_COUNT    20
 
+#define MOTOR_SPEED_WINDOW     50
+
 
 typedef struct
 {
@@ -40,6 +42,9 @@ typedef struct
 
     int32_t  total_round;      //总圈数
     int32_t  total_encoder;
+
+    int32_t  speed_encoder;    //窗口测速的起始计数
+    uint16_t speed_count;
 
     float    rate;            // 减速比
     float    max_rpm;         // 最大转速 RPM
